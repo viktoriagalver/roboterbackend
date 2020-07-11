@@ -9,5 +9,8 @@
         "lint": "eslint src"
     },
     "author": "Viktoria Galver",
-    "license": "ISC"
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^7.4.0"
+    }
 }
