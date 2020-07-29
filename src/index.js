@@ -15,9 +15,7 @@ const io = require('socket.io')(http);
 
 const config = require('../res/config.json');
 
-// definitions
-// /dev/ttyACM0
-// /dev/cu.usbmodem141301
+
 const port = new Serialport(config.port, {
   baudRate: 9600,
 });
@@ -34,9 +32,25 @@ port.on('open', () => {
   console.log('Verbindung hergestellt.');
 
   io.on('connection', (client) => {
-    client.on('control-left', (message) => {
+    client.on('control-up1', (message) => {
       console.log('received: %s', message);
       port.write(`l${message}\n`);
+    });
+    client.on('control-up2', (message) => {
+      console.log('received: %s', message);
+      port.write(`l${message}\n`);
+    });
+    client.on('control-down1', (message) => {
+      console.log('received: %s', message);
+      port.write(`r${message}\n`);
+    });
+    client.on('control-down2', (message) => {
+      console.log('received: %s', message);
+      port.write(`r${message}\n`);
+    });
+    client.on('control-left', (message) => {
+      console.log('received: %s', message);
+      port.write(`r${message}\n`);
     });
     client.on('control-right', (message) => {
       console.log('received: %s', message);
