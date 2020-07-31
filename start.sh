@@ -1,5 +1,5 @@
 #!/bin/bash
-cd "/home/pi/rc-backend"
+cd "/home/pi/sioserial/sioserial.js"
 while true; do
   /usr/bin/node src/index.js
 done
